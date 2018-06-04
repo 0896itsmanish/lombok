@@ -416,7 +416,7 @@ public class LombokProcessor extends AbstractProcessor {
 				Field field = procEnvClass.getDeclaredField("delegate");
 				field.setAccessible(true);
 				Object delegate = field.get(procEnv);
-				return (JavacProcessingEnvironment) delegate;
+				return getJavacProcessingEnvironment((ProcessingEnvironment) delegate);
 			} catch (final Exception e) {
 				e.printStackTrace();
 				procEnv.getMessager().printMessage(Kind.WARNING,

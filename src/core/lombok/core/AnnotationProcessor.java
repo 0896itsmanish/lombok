@@ -77,7 +77,7 @@ public class AnnotationProcessor extends AbstractProcessor {
 				Field field = procEnvClass.getDeclaredField("delegate");
 				field.setAccessible(true);
 				Object delegate = field.get(procEnv);
-				return (ProcessingEnvironment) delegate;
+				return getJavacProcessingEnvironment((ProcessingEnvironment) delegate, delayedWarnings);
 			} catch (final Exception e) {
 				delayedWarnings.add("Can't get the delegate of the gradle IncrementalProcessingEnvironment: " + trace(e));
 			}
